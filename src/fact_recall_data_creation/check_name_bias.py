@@ -46,8 +46,8 @@ class PersonNameFilter(LAMAUHNFilter):
         "P19": ["city", "country"],
         "P20": ["city", "country"],
         "P27": ["city", "country"],
-        "P1412": "language", # not in our dataset (but in counterfact)
-        "P103": "language", # not in our dataset (but in counterfact)
+        "P1412": ["language"], # not in our dataset (but in counterfact)
+        "P103": ["language"], # not in our dataset (but in counterfact)
     }
 
     def __init__(self, top_k, model_name, cache_folder):
