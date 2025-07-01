@@ -121,7 +121,7 @@ def predict_from_input(model, inp, answer_t=None):
   # and return this as the "prediction"
   out = model(**inp)["logits"]
   probs = torch.softmax(out[:, -1], dim=1)
-  if answer_t:
+  if answer_t is not None:
     preds = [answer_t]
     p = probs[:,answer_t]
   else:
