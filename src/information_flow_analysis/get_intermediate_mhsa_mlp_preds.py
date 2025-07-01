@@ -65,7 +65,11 @@ def get_intermediate_mhsa_mlp_preds(data, model_name, cache_dir):
         # identify it by looking for a col that only exists in PRISM
         if "rank_answers" in row.index:
             attribute_tok = mt.tokenizer.encode(row.prediction, add_special_tokens=False)
-            assert len(attribute_tok) == 1
+            if len(attribute_tok) != 1:
+                raise ValueError(
+                    f"Expected attribute_tok to have length 1, but got {len(attribute_tok)}. "
+                    f"Value: {attribute_tok}. Problematic row index: {row_i}."
+                )
             attribute_tok = attribute_tok[0]
             attribute_tok_final_rank = row.rank_answers
         else:
