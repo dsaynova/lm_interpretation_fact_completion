@@ -76,7 +76,7 @@ python -m src.create_ct_plots.generate_plots \
     --savefolder "data/create_ct_plots/llama2_7B/summary_pdfs/generic_samples" \
     --filename_template "{}_candidate_mlp.npz" \
     --arch "llama2_7B" \
-    --archname "Llama-2-7B" \  
+    --archname "Llama-2-7B" \
 
 # Llama 2 13B
 python -m src.create_ct_plots.generate_plots \
