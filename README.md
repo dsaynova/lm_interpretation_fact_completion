@@ -2,7 +2,7 @@
 Code for the paper ["Fact Recall, Heuristics or Pure Guesswork? Precise Interpretations of Language Models for Fact Completion"](https://arxiv.org/abs/2410.14405).
 
 ## PrISM Dataset Creation
-This section describes our method for creating the PrISM datasets. Each PrISM dataset is model-specific. We develop PrISM datasets for GPT-2 XL, Llama 2 7B and Llama 2 13B. PrISM datasets are created by the identification and generation of samples corresponding to each of the four prediction scenarios _exact fact recall_, _guesswork_, _heuristics recall_, and _generic language modelling_. We describe the method for collecting the samples corresponding to each prediction scenario below.
+This section describes our method for creating the PrISM datasets. Each PrISM dataset is model-specific. We develop PrISM datasets for GPT-2 XL, Llama2 7B and Llama2 13B. PrISM datasets are created by the identification and generation of samples corresponding to each of the four prediction scenarios _exact fact recall_, _guesswork_, _heuristics recall_, and _generic language modelling_. We describe the method for collecting the samples corresponding to each prediction scenario below.
 
 ### 1-2. Exact fact recall and Guesswork
 
@@ -164,17 +164,18 @@ mt = ModelAndTokenizer(<desired-model>, cache_folder=cache_folder)
 
 Run the script [scripts/fact_recall_data_creation/get_model_preds/gpt2_xl.sh](scripts/fact_recall_data_creation/get_model_preds/gpt2_xl.sh). Make sure that the LM, input file and output file arguments are correct in the script. It will currently save the results to `data/data_creation/gpt2_xl/lama_data_preds.jsonl`.
 
-**Llama 2 7B**
+**Llama2 7B**
 
 Run the script [scripts/fact_recall_data_creation/get_model_preds/llama2_7B.sh](scripts/fact_recall_data_creation/get_model_preds/llama2_7B.sh). Make sure that the LM, input file and output file arguments are correct in the script. It will currently save the results to `data/data_creation/llama2_7B/lama_data_preds.jsonl`.
 
-**Llama 2 13B**
+**Llama2 13B**
+
 Run the script [scripts/fact_recall_data_creation/get_model_preds/llama2_13B.sh](scripts/fact_recall_data_creation/get_model_preds/llama2_13B.sh). Make sure that the LM, input file and output file arguments are correct in the script. It will currently save the results to `data/data_creation/llama2_13B/lama_data_preds.jsonl`.
 
 
 #### 4. Get the average monthly Wikipedia page views for 2019 for each query subject. 
 
-The Wikipedia page views are added added as metadata, no filtering is performed here.
+The Wikipedia page views are added as metadata, no filtering is performed here.
 
 To collect the Wikipedia page views, run the code below:
 
@@ -234,7 +235,7 @@ Run the script [scripts/fact_recall_data_creation/check_prompt_bias/llama2_13B.s
 
 We label the queries on whether they are "correct" or "incorrect". We then add metadata on model confidence, proxied by consistency under paraphrasing. The partitioning of the dataset is then performed, and we store samples corresponding to exact fact recall (samples corresponding to no bias with popularity above 1000) and guesswork (predictions that are accurate but inconsistent).
 
-Use the notebook [src/fact_recall_data_creation/final_processing.ipynb](src/fact_recall_data_creation/final_processing.ipynb) for this. Make sure to edit the data sources in the header of the notebook to specify the model of interest (GPT-2 XL, Llama 2 7B or Llama 2 13B), matching the data that has been generated in steps 1-6.
+Use the notebook [src/fact_recall_data_creation/final_processing.ipynb](src/fact_recall_data_creation/final_processing.ipynb) for this. Make sure to edit the data sources in the header of the notebook to specify the model of interest (GPT-2 XL, Llama2 7B or Llama2 13B), matching the data that has been generated in steps 1-6.
 
 ### 3. Heuristics recall
 
