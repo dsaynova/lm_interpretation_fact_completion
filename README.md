@@ -240,8 +240,20 @@ Use the notebook [src/fact_recall_data_creation/final_processing.ipynb](src/fact
 
 ### 3. Heuristics recall
 
-### 4. Generic language modelling
+For heuristic recall we follow these steps:
 
+1. Identify the types of subjects that are allowed or common for each relation. For relations P495 and P740 we query Wikipedia for the types of the LAMA subjects.
+2. Use [fantasynamegenerators.com](https://www.fantasynamegenerators.com) to generate the input subjects in folder [synth_subjects](src/heuristics_recall_data_creation/synth_subjects).
+3. Perform a check that the generated subjects do not correspond to existing entities in Wikipedia
+4. Get model predictions
+
+### 4. Generic language modelling
+For generic language samples we follow these steps to extract data from Wikipedia:
+
+1. Download Wikipedia extract
+2. For each Wiki page get the first sentence (capped to 10 words) that fulfils the following conditions: longer than 5 words, less than 3 capital letters (likely a heading), next word is not a number or capitalized (likely an entity)
+3. Get model prediction
+4. Format data
 
 ## Mechanistic Interpretations of PrISM scenarios
 
